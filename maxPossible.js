@@ -7,32 +7,15 @@
 function maxPossible(number1, number2) {
   let num1 = String(number1).split("");
   let num2 = String(number2).split("");
-  let resArr = [];
-  let index = 0;
-  let tempnumb;
-  for (let i = 0; i < num1.length; i += 1) {
-    let counter = 0;
-    for (let j = 0; j < num2.length; j += 1) {
-      if (num1[i] < num2[j]) {
-        counter += 1;
-        num1[i] = num2[j];
-        index = j;
-        console.log("num2::", num2[j]);
-      }
-      tempnumb = num2[j];
-    }
-    resArr.push(tempnumb);
-    if (!counter) {
-      resArr.push("num1::", num1[i]);
-      console.log(num1[i]);
-    } else {
-      num2.splice(index, 1);
+  num2.sort((a, b) => b - a);
+  //console.log(num1, num2);
+  for (let i = 0; i < num1.length; i++) {
+    if (num1[i] < num2[0]) {
+      num1[i] = num2[0];
+      num2.shift();
     }
   }
-
-  resArr.push(num1.slice(resArr.length));
-
-  return resArr.join("");
+  return num1.join("");
 }
 
 console.log(maxPossible(523, 76)); // 763
