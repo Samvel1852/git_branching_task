@@ -1,3 +1,4 @@
+
 /*
 Write a function that makes the first number as large as possible by
 swapping out its digits for digits in the second number.
@@ -9,20 +10,19 @@ maxPossible(9132, 5564) ➞ 9655
 maxPossible(8732, 91255) ➞ 9755
 */
 
+
 function maxPossible(number1, number2) {
   let num1 = String(number1).split("");
   let num2 = String(number2).split("");
   num2.sort((a, b) => b - a);
-  //console.log(num1, num2);
   for (let i = 0; i < num1.length; i++) {
     if (num1[i] < num2[0]) {
       num1[i] = num2[0];
       num2.shift();
     }
   }
-  console.log(num1.join(""));
 }
 
-maxPossible(523, 76); //➞ 763
-maxPossible(9132, 5564); //➞ 9655
-maxPossible(8732, 91255); //➞ 9755
+console.log(maxPossible(523, 76)); // 763
+console.log(maxPossible(9132, 5564)); // 9655
+console.log(maxPossible(8732, 91255)); // 9755
